@@ -1,0 +1,661 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);}
+.w{padding:.75rem 0;}
+.hd{margin-bottom:1rem;}
+.hd h2{font-size:17px;font-weight:500;color:var(--color-text-primary);}
+.hd p{font-size:12px;color:var(--color-text-secondary);margin-top:3px;}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:1rem;}
+.nb{padding:5px 11px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);white-space:nowrap;}
+.nb.on{background:#EEEDFE;border-color:#7F77DD;color:#3C3489;font-weight:500;}
+.pg{display:none;}
+.pg.on{display:block;}
+.sec{margin-bottom:.9rem;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.85rem 1rem;margin-bottom:.6rem;}
+.card.danger{border-left:3px solid #E24B4A;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0;}
+.card.warn{border-left:3px solid #EF9F27;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0;}
+.card.good{border-left:3px solid #1D9E75;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0;}
+.card.info{border-left:3px solid #378ADD;border-radius:0 var(--border-radius-lg) var(--border-radius-lg) 0;}
+.ctit{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.4rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.bx{font-size:11px;padding:2px 6px;border-radius:20px;font-weight:500;white-space:nowrap;}
+.r{background:#FCEBEB;color:#A32D2D;}
+.a{background:#FAEEDA;color:#854F0B;}
+.b{background:#E6F1FB;color:#185FA5;}
+.g{background:#EAF3DE;color:#3B6D11;}
+.p{background:#EEEDFE;color:#3C3489;}
+.t{background:#E1F5EE;color:#0F6E56;}
+.ul{list-style:none;}
+.ul li{font-size:12.5px;color:var(--color-text-secondary);padding:3px 0 3px 13px;position:relative;line-height:1.6;border-bottom:0.5px solid var(--color-border-tertiary);}
+.ul li:last-child{border-bottom:none;}
+.ul li::before{content:"→";position:absolute;left:0;color:#7F77DD;font-size:11px;top:5px;}
+.kw{font-weight:500;color:var(--color-text-primary);}
+.no{font-family:var(--font-mono);font-size:12px;background:var(--color-background-secondary);padding:1px 5px;border-radius:3px;color:var(--color-text-primary);}
+.fml{background:var(--color-background-secondary);border-left:3px solid #7F77DD;padding:7px 11px;margin-top:7px;font-size:12px;font-family:var(--font-mono);line-height:1.8;color:var(--color-text-primary);}
+.tip{background:#EAF3DE;border-radius:var(--border-radius-md);padding:7px 11px;margin-top:7px;font-size:12px;color:#27500A;line-height:1.6;}
+.bad{background:#FCEBEB;border-radius:var(--border-radius-md);padding:7px 11px;margin-top:7px;font-size:12px;color:#791F1F;line-height:1.6;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .9rem;text-align:center;}
+.sn{font-size:22px;font-weight:500;color:#534AB7;}
+.sl{font-size:11px;color:var(--color-text-secondary);margin-top:2px;}
+.yr{font-size:10px;color:var(--color-text-tertiary);margin-left:3px;}
+.ptit{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
+.psub{font-size:12px;color:var(--color-text-secondary);margin-bottom:.9rem;}
+table.sc{width:100%;border-collapse:collapse;font-size:12px;}
+table.sc th{background:var(--color-background-secondary);padding:5px 8px;text-align:left;font-weight:500;color:var(--color-text-primary);border:0.5px solid var(--color-border-tertiary);}
+table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:top;}
+@media(max-width:520px){.g2,.g3{grid-template-columns:1fr;}}
+</style>
+
+<div class="w">
+<h2 class="sr-only">AP Statistics 五年冲刺复习完整指南</h2>
+
+<div class="hd">
+  <h2>AP Statistics · 五年真题冲刺指南 · 保分5分版</h2>
+  <p>2021–2025 全部FRQ + 评分标准深度整合 · 按考点分类 · 含逐条失分陷阱</p>
+</div>
+
+<div class="nav">
+  <div class="nb on" onclick="sw('ov')">总览 · 频率地图</div>
+  <div class="nb" onclick="sw('u1')">Unit 1–2 探索数据</div>
+  <div class="nb" onclick="sw('u3')">Unit 3 抽样设计</div>
+  <div class="nb" onclick="sw('u4')">Unit 4–6 概率分布</div>
+  <div class="nb" onclick="sw('u7')">Unit 7–9 推断核心</div>
+  <div class="nb" onclick="sw('chi')">Chi-square专项</div>
+  <div class="nb" onclick="sw('reg')">回归推断专项</div>
+  <div class="nb" onclick="sw('trap')">语言禁区速查</div>
+  <div class="nb" onclick="sw('score')">评分机制解析</div>
+</div>
+
+<!-- 总览 -->
+<div id="ov" class="pg on">
+  <div class="ptit">五年考点频率总览</div>
+  <div class="psub">红色 = 5年全考 · 橙色 = 4年 · 蓝色 = 2–3年 · 灰色 = 1年</div>
+
+  <div class="g3" style="margin-bottom:.8rem;">
+    <div class="stat"><div class="sn">15</div><div class="sl">必考核心考点</div></div>
+    <div class="stat"><div class="sn">47</div><div class="sl">精确失分陷阱</div></div>
+    <div class="stat"><div class="sn">5</div><div class="sl">年真题全覆盖</div></div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">5年全考 · 必须拿满分 <span class="bx r">每年必考</span></div>
+    <ul class="ul">
+      <li><span class="kw">假设检验三段式</span>：Hypotheses + Conditions + Calculation + Conclusion · 21年Q4单比例/22年Q4 CI/23年Q4配对t/24年Q1两比例/25年Q4单比例</li>
+      <li><span class="kw">推断结论语言</span>：p-value vs α比较 + fail to reject/reject + nondefinitive语言 + population context · 每年Q4或Q6必考</li>
+      <li><span class="kw">随机分配/抽样描述</span>：描述实施方法的步骤 · 21年Q2/22年Q2/23年Q2/24年Q3/25年Q2</li>
+      <li><span class="kw">期望值计算与解释</span>：E(X)=Σx·P(x)展示至少两项 + 三要素解释 · 21年Q3/22年Q3/23年Q3/24年Q4/25年Q5</li>
+      <li><span class="kw">图表读图比较</span>：boxplot/dotplot/scatterplot/segmented bar · 每年Q1或Q2</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">4年出现 · 高概率再考 <span class="bx a">高频</span></div>
+    <ul class="ul">
+      <li><span class="kw">binomial distribution</span> + calculator notation规范 · 21/22/23/25年</li>
+      <li><span class="kw">正态分布概率计算</span> normalcdf标准写法 · 21/22/23/25年</li>
+      <li><span class="kw">观察研究vs实验 + 因果推断</span> · 21/22/23/24年</li>
+      <li><span class="kw">confounding variable分析</span> · 21/22/23/24年</li>
+      <li><span class="kw">条件概率 + two-way table</span> · 21/22/24/25年</li>
+      <li><span class="kw">CI构建 + 解释 + 联动检验</span> · 22/23/24/25年</li>
+    </ul>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">2–3年出现 · 要能应对 <span class="bx b">中频</span></div>
+    <ul class="ul">
+      <li><span class="kw">LSRL斜率/r²解释 + residual</span> · 22/23年（历年高频，24/25年转为推断）</li>
+      <li><span class="kw">Chi-square检验</span>（association/homogeneity区分）· 21/24年</li>
+      <li><span class="kw">Paired t-test</span> vs two-sample t-test区分 · 23/25年</li>
+      <li><span class="kw">Geometric distribution</span> · 24年（配合binomial）</li>
+      <li><span class="kw">Slope t-test（回归推断）</span> · 23年Q5</li>
+      <li><span class="kw">Simpson's Paradox</span> · 22年Q6</li>
+      <li><span class="kw">Simulation p-value</span> · 22年Q5</li>
+    </ul>
+  </div>
+
+  <div class="card good">
+    <div class="ctit">Q6 Investigative Task规律 <span class="bx g">必读</span></div>
+    <ul class="ul">
+      <li>每年Q6都有2–3个"新公式/新概念"题——公式在题目里给出，考的是读懂+应用，不是背</li>
+      <li>21年：两种outlier方法比较 · 22年：Simpson's Paradox · 23年：正态分布+sampling distribution of range · 24年：自定义RV+期望值 · 25年：Cohen's d effect size</li>
+      <li>Q6每个part独立得分，不会的跳过继续写，部分分可以拿</li>
+      <li>Q6最后一问通常考"综合解释"，需要把前几部分的结果联系起来分析</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Unit 1-2 探索数据 -->
+<div id="u1" class="pg">
+  <div class="ptit">Unit 1–2 · 探索单变量与双变量数据</div>
+  <div class="psub">五年均有出现 · Q1和Q2高频 · 图表读图是必考基础</div>
+
+  <div class="card danger">
+    <div class="ctit">分布描述框架（histogram/dotplot/boxplot）<span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li><span class="kw">必须包含</span>：① context（变量名）② shape ③ center（用median） ④ spread（IQR或range） ⑤ unusual features（outlier或gap）</li>
+      <li>center必须用approximate语言："approximately 11.5" 或 "between 11 and 12"，不能说"the mean IS 11.5"（确定性语言扣分）</li>
+      <li>boxplot不能说shape为"normal"或"unimodal"——boxplot无法判断，说了反而扣分</li>
+      <li>shape可以说：skewed left/right，approximately symmetric；outlier只说"potential outlier"不说"is an outlier"</li>
+    </ul>
+    <div class="bad">❌ 常见错误："The mean of the distribution is 7.5" → 改为 "The center of the distribution is approximately 7 to 8"</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">比较两组分布（必须直接比较）<span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li>必须用<span class="kw">comparative language</span>："greater than / less than / similar to"，单独列出数据不算比较</li>
+      <li>比较center → 用median（不用mean，除非题目已给mean）</li>
+      <li>比较spread → 优先IQR，也可range，说两个更好</li>
+      <li>有outlier → 必须提，说哪组有/哪组没有</li>
+      <li>context → 同时提两组标签 + 变量名，缺一扣分</li>
+    </ul>
+    <div class="tip">模板："The distribution of [Y] for [Group A] has a higher center than [Group B]. The median for Group A (X) is greater than the median for Group B (Y)..."</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">均值vs中位数的关系 <span class="bx a">理解题</span></div>
+    <ul class="ul">
+      <li>右偏/右侧outlier → mean &gt; median（mean被拉向右尾）</li>
+      <li>左偏/左侧outlier → mean &lt; median</li>
+      <li>必须解释机制：mean is not resistant to outliers/skewness，被极端值拉动</li>
+      <li>只说"skewed"不指方向 → 不得分；必须说"skewed to the right"</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Segmented bar / Mosaic plot读图 <span class="bx a">高频陷阱</span><span class="yr">22/24年</span></div>
+    <ul class="ul">
+      <li><span class="kw">比例（proportion）</span>：看各bar中对应颜色高度，与总量无关</li>
+      <li><span class="kw">数量（count/number）</span>：必须 n × proportion 才能判断，不能只看比例</li>
+      <li>Mosaic plot：列宽代表总量，列内高度代表比例 → 两者同时可见</li>
+      <li>Simpson's Paradox（22年Q6）：整体看A更好，但分层后B更好 → 因为两组的subgroup构成不同</li>
+    </ul>
+    <div class="bad">❌ 22年最常见错误：以为proportion高 = number多 → 必须乘以各组total才能比数量</div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">LSRL · slope/r²/residual解释 <span class="bx b">双变量</span><span class="yr">22/23年</span></div>
+    <ul class="ul">
+      <li>slope解释：x每增加1单位，<span class="kw">predicted</span> y增加/减少b单位（必须有"predicted"或"estimated"）</li>
+      <li>r²解释：约r²%的<span class="kw">y的变异</span>可由x与y的线性关系解释（必须说y的变异，不是"data的变异"）</li>
+      <li>residual = actual − predicted；正residual → 点在线上方 → underestimate；负residual → 点在线下方 → overestimate</li>
+      <li>必须有单位：slope说"grams per millimeter"，r²不需要单位</li>
+    </ul>
+    <div class="bad">❌ r²错误写法："81.9% of the variability in the data" 或 "in the predicted mass" → 必须是 "in the mass (y变量)"</div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">Outlier两种判断方法 <span class="bx b">计算题</span><span class="yr">21/24年</span></div>
+    <ul class="ul">
+      <li>Method A（1.5×IQR rule）：low fence = Q1−1.5×IQR；high fence = Q3+1.5×IQR；超出范围为outlier</li>
+      <li>Method B（2 SD rule）：mean±2×SD区间外为outlier</li>
+      <li>右偏分布：Method A比Method B识别出更多outlier，因为mean和SD被右尾拉大，使得Method B的上界更远</li>
+      <li>必须代入具体数字验证，不能只说"使用rule"</li>
+    </ul>
+    <div class="fml">Low fence = Q1 − 1.5×IQR | High fence = Q3 + 1.5×IQR</div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">散点图描述（5要素）<span class="bx b">双变量</span><span class="yr">21/22/23年</span></div>
+    <ul class="ul">
+      <li>① direction（positive/negative） ② form（linear/nonlinear） ③ strength（strong/moderate/weak） ④ unusual features（outlier/influential point） ⑤ context（变量名）</li>
+      <li>缺context直接降P；缺direction或strength也降P</li>
+      <li>2021年Q6评分标准明确：只说"strong"不说方向不得分；只说"linear"不说strength不得分</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Unit 3 -->
+<div id="u3" class="pg">
+  <div class="ptit">Unit 3 · 抽样、实验设计与推广</div>
+  <div class="psub">五年均有出现 · Q2和Q3高频 · 因果推断是核心概念</div>
+
+  <div class="card danger">
+    <div class="ctit">随机分配方法描述（Completely Randomized Design）<span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li>必须说：① 给实验单元编号（01–60） ② 随机过程（random number generator / 纸条+混合抽取）③ without replacement ④ 分配结果（谁分到哪个treatment）</li>
+      <li>纸条法：必须说"同等大小""充分混合（mix well）""不放回抽取"，缺一降P</li>
+      <li>随机数法：必须标明范围（如01–70），忽略超出范围的数，不放回</li>
+      <li>Matched-pairs设计：每对内部随机决定谁先用treatment（掷硬币/随机数），必须说清楚两种结果各对应什么处理</li>
+    </ul>
+    <div class="bad">❌ 22年常见错误："flip a coin; if heads, give twin A the drug" → 没说if tails是什么 → 不得E</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">分层抽样（Stratified Random Sampling）实施<span class="bx r">必考</span><span class="yr">25年Q2</span></div>
+    <ul class="ul">
+      <li>必须说：① strata如何划分（如按row A–E）② 每个stratum内随机选取的方法 ③ 各stratum独立选取 ④ 每个stratum选出规定数量</li>
+      <li>25年评分标准：4个components缺任何一个都降P</li>
+      <li>不能把所有region混在一起再选 → 那不是stratified，是SRS</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">因果推断与推广的核心概念 <span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li><span class="kw">Random assignment</span> → 建立因果关系（causal inference）</li>
+      <li><span class="kw">Random sampling</span> → 推广到总体（generalization）</li>
+      <li>两者独立：有实验没random sampling → 不能推广；有random sampling没random assignment → 不能建立因果</li>
+      <li>21年Q2(c)：observational study → 只有association，不能说causes → 需指出confounding variable的存在</li>
+    </ul>
+    <div class="tip">记忆：Assignment → Causation；Sampling → Generalization。两个"A→C，S→G"。</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Matched-pairs设计的优势 <span class="bx a">概念题</span><span class="yr">22年Q2</span></div>
+    <ul class="ul">
+      <li>正确答法：配对设计让我们<span class="kw">更容易检测到治疗效果</span>（reduces variability in the estimate of the drug effect / makes it easier to find convincing evidence）</li>
+      <li>必须用comparative language（"easier than"/"better than CRD"）+ context</li>
+      <li>以下说法看起来对但<span class="kw">不得分</span>：reduces bias / accounts for variability / controls confounding（两种设计都能做到）</li>
+      <li>以下也不得分：只描述配对的setup，没说出优势</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Confounding variable的完整论证 <span class="bx a">高频</span><span class="yr">21/22/24年</span></div>
+    <ul class="ul">
+      <li>必须同时说三件事：① confounding variable与response variable有关联 ② confounding variable与explanatory variable有关联 ③ 因此无法确定是explanatory variable导致了response variable的变化</li>
+      <li>21年评分标准：只说"存在confounding variable"但没说两个关联 → 只得P</li>
+      <li>偏差（bias）的方向必须说明（under/overestimate），不能只说"有偏差"</li>
+    </ul>
+    <div class="tip">模板："[Confounding variable] is associated with [X] and also associated with [Y], so it is impossible to determine whether [X] caused the change in [Y]."</div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">观察研究vs实验 + 偏差类型 <span class="bx b">概念题</span></div>
+    <ul class="ul">
+      <li>Observational study：不干预，只记录 → 只能说association，不能说causes</li>
+      <li>Experiment：随机分配treatment → 可以建立因果（if conditions met）</li>
+      <li>Convenience sample：非随机，likely biased；Voluntary response：自愿，倾向极端意见</li>
+      <li>Response bias：自我报告可能系统性低报/高报（如21年Q2日记vs activity tracker）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Unit 4-6 概率分布 -->
+<div id="u4" class="pg">
+  <div class="ptit">Unit 4–6 · 概率、随机变量与分布</div>
+  <div class="psub">五年均有出现 · calculator notation规范是失分重灾区</div>
+
+  <div class="card danger">
+    <div class="ctit">Calculator Notation规范（失分第一名）<span class="bx r">必须背</span></div>
+    <ul class="ul">
+      <li>binomial：必须标参数名AND boundary值：<span class="no">1-binomcdf(n=20, p=0.10, upper bound=3)</span> ✅</li>
+      <li><span class="no">1-binomcdf(20, 0.10, 3)</span> ❌ → n和p没标，boundary没标，两个component都不得分</li>
+      <li><span class="no">1-binomcdf(n=20, p=0.10, 3)</span> ❌ → boundary没标，不得分</li>
+      <li>normal：<span class="no">normalcdf(lower=296, upper=304, mean=300, sd=5)</span> ✅；参数必须全部标明</li>
+      <li>21年评分标准列出了全部合格/不合格写法，规则统一：n、p、boundary必须全部标参数名</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Binomial Distribution · 完整定义RV <span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li>定义RV必须包含："the <span class="kw">number of</span> [successes] in [n trials / one hour / a 52-week year]"</li>
+      <li>说明分布：<span class="no">X ~ B(n, p)</span> 或 "binomial with n=___ and p=___"</li>
+      <li>四个条件：fixed n / independent / binary outcome / constant p</li>
+      <li>期望值计算必须展示：<span class="no">E(X) = np = 52(0.005) = 0.26</span>，不能只写答案</li>
+    </ul>
+    <div class="fml">μ = np | σ = √(np(1−p)) | P(X≥k) = 1 − binomcdf(n=_, p=_, upper bound=k−1)</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">期望值解释（三要素缺一不可）<span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li>① <span class="kw">长期重复</span>（in the long run / if repeated many times / over many years）</li>
+      <li>② <span class="kw">平均值</span>（average / mean，不能说"will receive exactly"）</li>
+      <li>③ <span class="kw">context</span>（变量名，如gift cards / bedrooms / cash prize）</li>
+      <li>21/23/24/25年均考期望值解释，三年评分标准都要求三要素</li>
+    </ul>
+    <div class="tip">模板："If [scenario] were repeated many times, the average [variable] would be approximately [E(X)] per [unit]."</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Geometric Distribution <span class="bx a">公式题</span><span class="yr">24年Q4</span></div>
+    <ul class="ul">
+      <li>适用：重复独立试验，直到第一次成功，记录总试验次数x（x从1开始）</li>
+      <li>P(X=x) = (1−p)^(x−1) · p</li>
+      <li>μ = 1/p；σ = √(1−p)/p</li>
+      <li>vs binomial：几何分布n不固定，直到成功为止；二项分布n固定</li>
+    </ul>
+    <div class="fml">Geometric: μ = 1/p | σ = √(1−p)/p | P(X=x) = (1−p)^(x−1)·p</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">正态分布概率计算 <span class="bx a">必考</span></div>
+    <ul class="ul">
+      <li>必须展示：① 说明使用正态分布 + 均值和标准差参数 ② 标明事件范围（boundary + direction） ③ 正确概率</li>
+      <li>z-score = (x−μ)/σ，分子不能颠倒（颠倒只得P）</li>
+      <li>抽样分布：σ_x̄ = σ/√n，必须展示除以√n的过程</li>
+      <li>线性变换：E(aX+b) = a·E(X)+b；Var(aX+b) = a²·Var(X)（23年Q3(d)考了换算货币）</li>
+    </ul>
+    <div class="fml">σ_x̄ = σ/√n | z = (x−μ)/σ | E(aX+b) = aE(X)+b</div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">条件概率 + Two-way Table <span class="bx b">计算题</span><span class="yr">21/24年</span></div>
+    <ul class="ul">
+      <li>Joint probability：P(A and B) = cell count / grand total</li>
+      <li>Conditional probability：P(A|B) = P(A∩B)/P(B) = cell count / row or column total</li>
+      <li>分母是"given"对应的那行/那列的total，不是grand total</li>
+    </ul>
+    <div class="fml">P(A|B) = P(A∩B)/P(B) = cell / row total</div>
+  </div>
+</div>
+
+<!-- Unit 7-9 推断 -->
+<div id="u7" class="pg">
+  <div class="ptit">Unit 7–9 · 推断核心（Inference）</div>
+  <div class="psub">五年均有Q4 = 完整推断题 · 三段式框架不能错</div>
+
+  <div class="card danger">
+    <div class="ctit">假设检验三段式 · Section 1 · Hypotheses + Test Name <span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li>检验名称必须完整：<span class="kw">one-proportion z-test</span>（不能只说one-sample z-test）；<span class="kw">matched pairs t-test for a mean difference</span>；<span class="kw">two-proportion z-test</span></li>
+      <li>H₀ and Hₐ必须：① 用population parameter（p, μ, μd）② 有正确等式/不等式 ③ context包含总体描述+sampling units+response variable</li>
+      <li>用p̂代替p写hypothesis → component 2不得分（除非明确定义p̂为population proportion）</li>
+    </ul>
+    <div class="tip">Context三要素："the true proportion of [sampling units] at [location] who [response variable]"</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">假设检验三段式 · Section 2 · Conditions <span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li><span class="kw">Independence条件</span>：① random sample/assignment（写"SRS-check"可以，但不能写"random-check"）② n ≤ 10%N（写出具体计算：130 ≤ 0.10×2000）</li>
+      <li><span class="kw">Normality · proportion</span>：np₀ ≥ 10 且 n(1−p₀) ≥ 10，<span class="kw">用p₀不用p̂</span>，必须代入计算值</li>
+      <li><span class="kw">Normality · mean</span>：n ≥ 30（CLT）或分布no strongly skewed/no outliers（n&lt;30时）</li>
+      <li><span class="kw">Paired t-test</span>：independence来自random assignment，不是random sample</li>
+    </ul>
+    <div class="bad">❌ 常见错误：proportion条件用p̂而非p₀；independence只写"random"不写"sample"；10%条件忘记写</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">假设检验三段式 · Section 3 · Conclusion <span class="bx r">必考</span></div>
+    <ul class="ul">
+      <li>必须包含：① p-value与α的明确比较（"p-value of 0.023 &lt; α = 0.05"）② reject/fail to reject H₀ ③ context结论（population层面）④ nondefinitive语言</li>
+      <li>p-value comparison可以用critical value替代（如z=1.99 > 1.645）</li>
+      <li>结论必须说population，不能说sample（"the sample proportion shows..." → 扣分）</li>
+    </ul>
+    <div class="tip">模板："Because the p-value (0.023) &lt; α (0.05), we reject H₀. There is convincing statistical evidence that [Hₐ in context with population language]."</div>
+    <div class="bad">❌ 语言禁区：accept H₀ / proves / confirms / there is no evidence / the data shows（这几个直接扣分）</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">置信区间 · 构建 + 解释 + 联动检验 <span class="bx r">必考</span><span class="yr">22/25年</span></div>
+    <ul class="ul">
+      <li>解释必须说：<span class="kw">We are C% confident that the true [parameter] is between [L] and [U]</span></li>
+      <li>不能说"95% probability that population proportion is in the interval"（population parameter不是随机变量）</li>
+      <li>CI联动检验：null value不在CI内 → reject H₀；在CI内 → fail to reject H₀</li>
+      <li>97% CI ↔ α=0.03双侧检验；95% CI ↔ α=0.05双侧检验</li>
+      <li>Conditions：proportion用p̂计算SE（CI）；hypothesis test用p₀计算SE（z-test）</li>
+    </ul>
+    <div class="fml">CI: p̂ ± z* × √(p̂(1−p̂)/n) | z-test: z = (p̂−p₀)/√(p₀(1−p₀)/n)</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Paired t-test vs Two-sample t-test的选择 <span class="bx a">必须能区分</span><span class="yr">23/25年</span></div>
+    <ul class="ul">
+      <li><span class="kw">Paired</span>：同一被试两次测量，或有意义地自然配对（如双胞胎/同一条件下的before-after）</li>
+      <li><span class="kw">Two-sample</span>：两组不同被试，random assignment分到各组，没有自然配对</li>
+      <li>23年Q4：omega-3 vs placebo，同一患者两周分别接受两种处理 → Paired（crossover design）</li>
+      <li>25年Q6：100名儿童随机分到9am和3pm两组 → Two-sample（独立，无配对）</li>
+      <li>判断关键：是否同一个对象接受两次处理，或是否有meaningful pairing</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Type I / Type II 错误 + Consequence <span class="bx a">概念题</span></div>
+    <ul class="ul">
+      <li>Type I：H₀为真，却reject → 错误地认为[Hₐ]成立</li>
+      <li>Type II：H₀为假，却fail to reject → 错误地认为没有证据支持[Hₐ]</li>
+      <li>21年Q4(b)：fail to reject H₀后 → 可能犯Type II error → consequence：没有推出coupon，但实际上coupon有效</li>
+      <li>必须说consequence（现实影响），不能只定义错误类型</li>
+    </ul>
+    <div class="tip">Type I模板："Concluding that [Hₐ] when in fact [H₀] is true, so [consequence]."</div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">Simulation估算p-value <span class="bx b">非公式法</span><span class="yr">22年Q5</span></div>
+    <ul class="ul">
+      <li>步骤：① 在模拟dotplot上数出"大于等于observed statistic"的点数 ② 除以总试验次数 ③ 与α比较 ④ 给出结论in context</li>
+      <li>22年：3/120 = 0.025 &lt; 0.05 → convincing evidence</li>
+      <li>必须说明p-value是"假设H₀成立时，得到这么极端结果的概率"</li>
+    </ul>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">Cohen's d Effect Size <span class="bx b">新考点</span><span class="yr">25年Q6</span></div>
+    <ul class="ul">
+      <li>d = |x̄₁−x̄₂| / sp，等组时sp = √((s₁²+s₂²)/2)</li>
+      <li>解读：d&lt;0.20 = not meaningful；0.20–0.80 = somewhat meaningful；≥0.80 = very meaningful</li>
+      <li>统计显著（small p-value）≠ 实际重要（large d）；大样本下小差异也可显著</li>
+      <li>sd增大 → sp增大 → d减小 → practical importance减小</li>
+    </ul>
+    <div class="fml">sp = √((s₁²+s₂²)/2) | d = |x̄₁−x̄₂|/sp</div>
+  </div>
+</div>
+
+<!-- Chi-square专项 -->
+<div id="chi" class="pg">
+  <div class="ptit">Chi-square · 专项速查</div>
+  <div class="psub">两种chi-square必须区分 · H₀写法是高频失分点</div>
+
+  <div class="card danger">
+    <div class="ctit">两种Chi-square检验的区分 <span class="bx r">必须能区分</span></div>
+    <div class="g2" style="margin-top:.5rem;">
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem;">
+        <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:.3rem;">Chi-square for Homogeneity</div>
+        <ul class="ul">
+          <li>多个<span class="kw">独立随机样本</span>（从不同总体各取一个）</li>
+          <li>比较同一变量在各总体的分布是否相同</li>
+          <li>21年Q5：Baltimore/Detroit/San Diego三个独立样本</li>
+          <li>H₀：The proportion of [Y] is the same across [all groups]</li>
+        </ul>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.7rem;">
+        <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:.3rem;">Chi-square for Association</div>
+        <ul class="ul">
+          <li>一个随机样本，两个分类变量</li>
+          <li>检验两个变量之间是否有关联</li>
+          <li>24年Q5：500名collectors，month vs card type</li>
+          <li>H₀：There is no association between [X] and [Y] in the population</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Chi-square H₀的正确写法 <span class="bx r">失分陷阱</span></div>
+    <ul class="ul">
+      <li>Homogeneity H₀："The proportion of [variable] is the same across [all groups/cities]" ✅</li>
+      <li>Association H₀："There is no association between [X] and [Y] in the population" ✅</li>
+      <li>Hₐ不能写成单方向（"Group A has higher proportion than Group B"）→ 必须说"at least one group differs"或"there is an association"</li>
+      <li>H₀不能写"independent"（要写"no association"）</li>
+      <li>H₀ / Hₐ不能引用sample proportion → 必须是population层面</li>
+    </ul>
+    <div class="bad">❌ 错误：H₀: p₁ = p₂ = p₃（用样本notation）→ 必须用words说明是population proportion相等</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Chi-square计算要点 <span class="bx a">计算</span></div>
+    <ul class="ul">
+      <li>df = (rows−1)(columns−1)</li>
+      <li>expected count = (row total × column total) / grand total</li>
+      <li>conditions：所有expected count ≥ 5（不是observed count）</li>
+      <li>χ² = Σ(observed−expected)²/expected</li>
+      <li>p-value = P(χ² &gt; calculated value)，查chi-square table用df</li>
+    </ul>
+    <div class="fml">E = (row total × col total) / n | df = (r−1)(c−1)</div>
+  </div>
+</div>
+
+<!-- 回归推断专项 -->
+<div id="reg" class="pg">
+  <div class="ptit">回归推断 · Slope的t-test专项</div>
+  <div class="psub">23年Q5完整考过 · 历年也有slope/r²解释 · 必须掌握</div>
+
+  <div class="card danger">
+    <div class="ctit">Slope推断 · t-test for slope <span class="bx r">23年Q5完整考</span></div>
+    <ul class="ul">
+      <li>H₀: β = [value]；Hₐ: β ≠ [value]（或 &gt;/&lt;）；β是population slope</li>
+      <li>df = n − 2（不是n−1）</li>
+      <li>双侧检验p-value = 2 × 单侧查表值</li>
+      <li>23年：t=3.408，df=28，单侧p&lt;0.001，双侧p=0.002</li>
+      <li>结论：evidence that population slope is different from [null value]（不能说"equals"或"is exactly"）</li>
+    </ul>
+    <div class="fml">df = n−2 | two-sided p = 2 × one-sided p</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">LSRL · slope/r²/residual解释精要 <span class="bx a">高频</span></div>
+    <ul class="ul">
+      <li>slope必须说：predicted y每增加b单位，per one-unit increase in x + 单位</li>
+      <li>r²必须说：约r²%的<span class="kw">y变量的变异</span>可由x与y的线性关系解释（不能说data/predicted y/both variables）</li>
+      <li>residual = actual − predicted；点在线上方 → 正residual → 线underestimate；点在线下方 → 负residual → 线overestimate</li>
+      <li>描述散点图关系时：direction + form + strength + unusual features + context，缺context降P</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 语言禁区 -->
+<div id="trap" class="pg">
+  <div class="ptit">语言禁区 · 写了必扣分</div>
+  <div class="psub">来自五年评分标准 · 每一条都有明确扣分记录</div>
+
+  <div class="card danger">
+    <div class="ctit">推断结论语言禁区 <span class="bx r">直接从E降P或P降I</span></div>
+    <ul class="ul">
+      <li>❌ "accept H₀" → ✅ "fail to reject H₀"</li>
+      <li>❌ "proves / confirms / shows" → ✅ "provides convincing statistical evidence"</li>
+      <li>❌ "there is no evidence" → ✅ "there is not convincing statistical evidence"</li>
+      <li>❌ "the data shows [population]..." → ✅ 结论必须是关于population parameter</li>
+      <li>❌ "there is a 95% chance the population proportion is between..." → ✅ "we are 95% confident that..."（population parameter不是随机变量）</li>
+      <li>❌ p-value解释为"H₀为真的概率" → ✅ "the probability of getting a result this extreme assuming H₀ is true"</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">数据分析语言禁区 <span class="bx r">直接降分</span></div>
+    <ul class="ul">
+      <li>❌ boxplot说"normal" / "unimodal" / "bimodal" → boxplot看不出，说了会扣分</li>
+      <li>❌ center只列数值不比较 → ✅ 必须用"greater than/less than"</li>
+      <li>❌ slope说"y increases by b" → ✅ 必须说"predicted y increases by b"</li>
+      <li>❌ r²说"variation in the data" → ✅ 必须说"variation in [y variable]"</li>
+      <li>❌ center用确定性语言"the median is 7.5" → ✅ "approximately 7.5" 或 "between 7 and 8"</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Context缺失（每题都要）<span class="bx a">系统性失分</span></div>
+    <ul class="ul">
+      <li>所有推断结论：population描述 + sampling units + response variable，三者缺一降P</li>
+      <li>期望值解释：必须有context（gift card / bedroom / cash prize）</li>
+      <li>分布比较：必须同时有两组的标签 + 变量名</li>
+      <li>slope解释：必须有两个变量的单位（grams per millimeter，不能省略单位）</li>
+      <li>推断结论：conclusion必须和Hₐ方向一致；如果是"fail to reject"，结论是"not convincing evidence that [Hₐ]"</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Calculator使用禁区 <span class="bx a">计算题</span></div>
+    <ul class="ul">
+      <li>❌ 只写calculator输出答案，没有支持公式或过程 → 不得show work分</li>
+      <li>❌ binomcdf(20, 0.10, 3) → 参数名全缺 → 不得分</li>
+      <li>❌ normalcdf(296, 304, 300, 5) → 参数名全缺 → 不得分</li>
+      <li>❌ 期望值用calculator 1-VAR STATS → 不得分（必须手写Σx·P(x)）</li>
+      <li>✅ 公式/notation + 代值 → 即使计算结果出错也得方法分</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 评分机制 -->
+<div id="score" class="pg">
+  <div class="ptit">评分机制解析 · 如何最大化得分</div>
+  <div class="psub">理解评分规则，是做到5分的最后一步</div>
+
+  <div class="card danger">
+    <div class="ctit">Q1–Q5评分表（E/P/I系统）<span class="bx r">必须理解</span></div>
+    <table class="sc" style="margin-top:.5rem;">
+      <tr><th>分数</th><th>Q1–Q3·Q5（三part）</th><th>Q4（三section）</th></tr>
+      <tr><td>4</td><td>3E</td><td>3E</td></tr>
+      <tr><td>3</td><td>2E+1P</td><td>2E+1P</td></tr>
+      <tr><td>2</td><td>2E+0P / 1E+1P以上 / 3P</td><td>同左</td></tr>
+      <tr><td>1</td><td>1E+0P / 0E+2P</td><td>同左</td></tr>
+      <tr><td>0</td><td>其余</td><td>其余</td></tr>
+    </table>
+    <div class="tip" style="margin-top:.5rem;">策略：每道题目标是2E+1P = 3分。6道题全3分 = 18分 ≈ 5分。宁可每题拿稳3分，也不要赌某题全E而其他题放弃。</div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Q6评分（Investigative Task）<span class="bx r">特殊规则</span></div>
+    <ul class="ul">
+      <li>每个part独立算：E=1分，P=0.5分，相加后取整（2.5分用holistic判断升/降）</li>
+      <li>各part独立得分，不会的跳过，继续做后面的part</li>
+      <li>Q6通常4–5个part，全拿E = 4分；3E1P = 3.5分 → holistic可能到4</li>
+      <li>holistic分：看communication质量，答得清晰、逻辑严密的往上靠</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">从P到E · 只差这一步 <span class="bx a">提分关键</span></div>
+    <ul class="ul">
+      <li>Conditions：写了"random"但没写"sample" → P；加上"sample" → E</li>
+      <li>Conclusion：有p-value比较但结论没context → P；加上population + variable → E</li>
+      <li>分布描述：有shape/center/spread但没context → P；加上变量名 → E</li>
+      <li>Slope解释：有数值和方向但没"predicted" → P；加上predicted → E</li>
+      <li>期望值：算对了但解释只说"average"没有long run → P；加上long run → E</li>
+      <li>随机分配：说了随机过程但没说"without replacement" → P；加上 → E</li>
+    </ul>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">时间分配与考场策略 <span class="bx b">实战</span></div>
+    <ul class="ul">
+      <li>Q1–Q5：建议各13分钟（共65分钟）；Q6：留25分钟</li>
+      <li>推断题（Q4）顺序：先写hypotheses → conditions → calculations → conclusion，不要跳</li>
+      <li>不确定的calculation：先写公式和代值，答案写错也得方法分</li>
+      <li>Q6时间不够：先写能写的part，每part首先写出结论，再补justification</li>
+      <li>Holistic分：答案之间有2.5时，清晰的communication往上打；混乱的往下打</li>
+    </ul>
+  </div>
+
+  <div class="card good">
+    <div class="ctit">五年高频必背公式清单 <span class="bx g">考场速查</span></div>
+    <div class="g2" style="margin-top:.5rem;">
+      <div>
+        <div class="fml">Binomial: μ=np, σ=√(np(1−p))
+Geometric: μ=1/p, σ=√(1−p)/p
+E(X)=Σx·P(x)
+E(aX+b)=aE(X)+b
+
+z-test: z=(p̂−p₀)/√(p₀(1−p₀)/n)
+t-test: t=(x̄−μ₀)/(s/√n)
+paired: t=(d̄−0)/(sd/√n)</div>
+      </div>
+      <div>
+        <div class="fml">CI: stat ± z*(or t*)×SE
+95% CI: z*=1.96
+99% CI: z*=2.576
+
+IQR rule: Q1−1.5IQR, Q3+1.5IQR
+Cohen's d: |x̄₁−x̄₂|/sp
+sp=√((s₁²+s₂²)/2)
+r²: % variation in y explained by x</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function sw(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  event.target.classList.add('on');
+  window.scrollTo(0,0);
+}
+</script>
