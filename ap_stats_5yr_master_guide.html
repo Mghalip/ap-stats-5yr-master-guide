@@ -71,6 +71,7 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
 
 <div class="nav">
   <div class="nb on" onclick="sw('ov')">总览 · 频率地图</div>
+  <div class="nb" onclick="sw('pred')">2026押题</div>
   <div class="nb" onclick="sw('u1')">Unit 1–2 探索数据</div>
   <div class="nb" onclick="sw('u3')">Unit 3 抽样设计</div>
   <div class="nb" onclick="sw('u4')">Unit 4–6 概率分布</div>
@@ -168,6 +169,86 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
       <li>21年：两种outlier方法比较 · 22年：Simpson's Paradox · 23年：正态分布+sampling distribution of range · 24年：自定义RV+期望值 · 25年：Cohen's d effect size</li>
       <li>Q6每个part独立得分，不会的跳过继续写，部分分可以拿</li>
       <li>Q6最后一问通常考"综合解释"，需要把前几部分的结果联系起来分析</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2026押题 -->
+<div id="pred" class="pg">
+  <div class="ptit">2026 AP Statistics FRQ 押题预测</div>
+  <div class="psub">只预测结构和高概率得分点，不预测具体题干 · 2026课程修订从2026-27学年起，May 2026考试范围与2021-2025一致</div>
+
+  <div class="card danger">
+    <div class="ctit">一句话押题版 <span class="bx r">考前优先级</span></div>
+    <ul class="ul">
+      <li><span class="kw">最高优先级</span>：one-sample t-test for a population mean（Q4缺口最大）+ 完整推断三段式</li>
+      <li><span class="kw">必须稳拿</span>：图表比较 + 抽样/实验设计 + binomial/geometric calculator notation</li>
+      <li><span class="kw">Q6策略</span>：新概念应用能力比背公式更重要；公式通常会给，考的是读懂和解释</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Q1 · 探索数据 <span class="bx r">几乎100%</span></div>
+    <ul class="ul">
+      <li>押：boxplot或dotplot比较两组分布；均值vs中位数关系；可能结合outlier判断（1.5×IQR rule）</li>
+      <li>高危失分：只列数值不比较；boxplot说normal或unimodal；context缺失；center用确定性语言</li>
+      <li>必写动作：center、spread、outlier都要直接比较，并带上变量名和组别</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Q2 · 抽样或实验设计 <span class="bx r">几乎100%</span></div>
+    <ul class="ul">
+      <li>押：stratified random sampling实施步骤；或completely randomized design随机分配方法</li>
+      <li>可能加问：bias来源、confounding variable、推广范围、因果结论是否成立</li>
+      <li>必背核心：Sampling → generalization；Assignment → causation。两个概念不能混</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Q3 · 概率与随机变量 <span class="bx a">几乎100%</span></div>
+    <ul class="ul">
+      <li>押：binomial distribution（五年出现4次，仍高概率）；或geometric distribution（中等概率）</li>
+      <li>必考感强：期望值计算 + 三要素解释；可能加conditional probability或two-way table</li>
+      <li>高危失分：calculator notation不标参数名；期望值解释缺long run或context</li>
+    </ul>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Q4 · 完整推断题 <span class="bx r">100%</span></div>
+    <ul class="ul">
+      <li>最强押：one-sample t-test for a population mean。2021-2025 Q4没有单独完整考过，缺口最大</li>
+      <li>备选押：two-proportion z-test；或CI联动假设检验结论</li>
+      <li>必背框架：hypotheses（检验名称+H₀/Hₐ+context）→ conditions（independence+normality写数字）→ test statistic+p-value → conclusion（nondefinitive语言+population层面）</li>
+    </ul>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Q5 · 混合考点 <span class="bx a">几乎100%</span></div>
+    <ul class="ul">
+      <li>押：chi-square（homogeneity或association）；或paired t-test联动two-sample t-test区分</li>
+      <li>可能组合：two-way table概率计算、conditional probability、joint probability</li>
+      <li>chi-square高危点：H₀用样本notation；association和homogeneity混淆；expected count用observed count代替</li>
+    </ul>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">Q6 · Investigative Task <span class="bx b">100%但内容不可预测</span></div>
+    <ul class="ul">
+      <li>规律：公式一定在题目里给出，考的是读懂、代入、解释，不是背新公式</li>
+      <li>可能方向：effect size另一种形式、simulation估算p-value、random variable transformation、比较两种统计方法、某种新的skewness或distribution measure</li>
+      <li>应对策略：不会的part跳过继续写；每个part独立得分；先写结论，再补justification</li>
+      <li>最后一问通常是综合解释，要把前几部分的结果联系起来，不要孤立回答</li>
+    </ul>
+  </div>
+
+  <div class="card good">
+    <div class="ctit">考前最后24小时复习顺序 <span class="bx g">实战</span></div>
+    <ul class="ul">
+      <li>先背Q4完整推断模板：test name、parameter、conditions、p-value结论语言</li>
+      <li>再练Q1图表比较：每题强迫自己写directly compare + context</li>
+      <li>然后复盘Q2随机化步骤：编号、随机过程、without replacement、分配/抽取结果</li>
+      <li>最后看Q3/Q6：calculator notation、expected value解释、新概念读题能力</li>
     </ul>
   </div>
 </div>
