@@ -45,6 +45,14 @@ body{font-family:var(--font-sans);}
 table.sc{width:100%;border-collapse:collapse;font-size:12px;}
 table.sc th{background:var(--color-background-secondary);padding:5px 8px;text-align:left;font-weight:500;color:var(--color-text-primary);border:0.5px solid var(--color-border-tertiary);}
 table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:top;}
+.qa{display:grid;grid-template-columns:72px 1fr;gap:.55rem;align-items:start;padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary);}
+.qa:last-child{border-bottom:none;}
+.tag{font-size:11px;font-weight:500;text-align:center;border-radius:20px;padding:3px 7px;white-space:nowrap;}
+.tag.ok{background:#EAF3DE;color:#2D6110;}
+.tag.mid{background:#FAEEDA;color:#854F0B;}
+.tag.nope{background:#FCEBEB;color:#A32D2D;}
+.qa div:last-child{font-size:12px;line-height:1.65;color:var(--color-text-secondary);}
+.why{display:block;margin-top:2px;color:var(--color-text-tertiary);}
 @media(max-width:520px){.g2,.g3{grid-template-columns:1fr;}}
 </style>
 
@@ -65,6 +73,7 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
   <div class="nb" onclick="sw('chi')">Chi-square专项</div>
   <div class="nb" onclick="sw('reg')">回归推断专项</div>
   <div class="nb" onclick="sw('trap')">语言禁区速查</div>
+  <div class="nb" onclick="sw('train')">正误答案训练</div>
   <div class="nb" onclick="sw('score')">评分机制解析</div>
 </div>
 
@@ -75,7 +84,7 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
 
   <div class="g3" style="margin-bottom:.8rem;">
     <div class="stat"><div class="sn">15</div><div class="sl">必考核心考点</div></div>
-    <div class="stat"><div class="sn">47</div><div class="sl">精确失分陷阱</div></div>
+    <div class="stat"><div class="sn">70+</div><div class="sl">精确失分陷阱</div></div>
     <div class="stat"><div class="sn">5</div><div class="sl">年真题全覆盖</div></div>
   </div>
 
@@ -566,6 +575,88 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
       <li>❌ normalcdf(296, 304, 300, 5) → 参数名全缺 → 不得分</li>
       <li>❌ 期望值用calculator 1-VAR STATS → 不得分（必须手写Σx·P(x)）</li>
       <li>✅ 公式/notation + 代值 → 即使计算结果出错也得方法分</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 正误答案训练 -->
+<div id="train" class="pg">
+  <div class="ptit">正误答案训练 · 评分标准内化</div>
+  <div class="psub">按2021–2025 FRQ scoring guidelines整理 · 目标是让学生一眼看出E/P/I的边界</div>
+
+  <div class="card danger">
+    <div class="ctit">Boxplot比较两组分布 <span class="bx r">25年Q1 / 高频</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>Country A 的gas mileage center较低，因为median约18 mpg，小于Country B的median约32 mpg；Country A的range略大，但IQR较小；Country A有一个高端outlier，Country B没有明显outlier。<span class="why">为什么得E：直接比较center/spread/outlier，并且有两组标签和变量context。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>Country A median is 18, IQR is 8. Country B median is 32, IQR is 12.<span class="why">为什么只能P：列了数值，但没有用greater/less/directly compare的语言；评分标准要求“直接比较”。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>Country A is normal and Country B is unimodal. The mean of A is 18.<span class="why">为什么不得E：boxplot不能判断normal/unimodal；用mean描述boxplot center也不合适。</span></div></div>
+    <div class="tip">考场句型：The distribution of [variable] for [group 1] has a lower/higher center than [group 2] because the median is...</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">均值、中位数、outlier关系 <span class="bx a">25年Q1</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>The mean is expected to be greater than 18 mpg because the distribution is right-skewed / has a high outlier, which pulls the nonresistant mean above the median of 18 mpg.<span class="why">为什么得E：说清mean方向、median数值、右偏/高端outlier如何拉动mean。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>The mean is greater because the distribution is skewed.<span class="why">为什么只能P：方向说对，但“skewed”没说right/left，也没解释为什么mean被拉高。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>The mean is 18 because the median is 18.<span class="why">为什么错：mean和median不是同一个量；有右侧outlier时mean通常大于median。</span></div></div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Stratified Random Sample实施 <span class="bx r">25年Q2</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>把每一行作为一个stratum。分别在A行1–5、B行6–10、C行11–15、D行16–20、E行21–25中用RNG随机选1个region；每行独立进行，最后检查被选中region里的所有cabbage plants。<span class="why">为什么得E：strata、等可能随机、各stratum独立、每层选1个都完整。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>Use a random number generator to choose 5 regions from 1 to 25.<span class="why">为什么只能P/甚至I：有随机，但不能保证每一行选1个；没有真正执行stratified sampling。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>Choose the five regions closest to the river because aphids are more common there.<span class="why">为什么错：这是biased/convenience selection，不能估计整个field的proportion。</span></div></div>
+    <div class="bad">易错点：用纸条法必须说mix well/shuffle；用随机数法必须说明每一层的号码范围。</div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">Probability中的独立性与replacement <span class="bx a">25年Q3</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>Because a song can be replayed, the selections are independent. P(both rock songs)=0.10×0.10=0.01.<span class="why">为什么得E：看懂“can be replayed”，所以不是without replacement。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>P(both)=100/1000 × 99/999 = 0.0099.<span class="why">为什么会丢分：这是without replacement的逻辑；题目允许replay，所以第二次概率仍是0.10。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>P(both)=0.10+0.10=0.20.<span class="why">为什么错：both/and要乘，不是加。</span></div></div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Binomial + Calculator Notation <span class="bx r">21/25年高频</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>Let X = number of rock songs played in one hour. X ~ Binomial(n=20, p=0.10). P(X ≥ 4)=1−binomcdf(n=20, p=0.10, upper bound=3)=0.133.<span class="why">为什么得E：RV定义、distribution、参数、boundary都清楚。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>1−binomcdf(20, 0.10, 3)=0.133.<span class="why">为什么容易丢show work：答案对，但calculator参数和boundary未标明，评分标准可能不给过程分。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>Use normalcdf because n=20 is large enough.<span class="why">为什么错：这里要求binomial模型；且np=2，不满足常规正态近似条件。</span></div></div>
+  </div>
+
+  <div class="card danger">
+    <div class="ctit">Hypothesis Test参数与条件 <span class="bx r">25年Q4 / 每年必考</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>H0: p=0.22; Ha: p&gt;0.22, where p is the true proportion of students at Karen's high school who use the app at least once per week. One-proportion z-test. Conditions: random sample of 130 students; 130≤10%(2000); 130(0.22)=28.6 and 130(0.78)=101.4 are at least 10.<span class="why">为什么得E：test name精确、parameter context完整、independence和large counts都用null值检查。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>H0: p̂=0.22; Ha: p̂&gt;0.22. Random-check. 38 and 92 are both greater than 10.<span class="why">为什么只能P：p̂是样本统计量，不是parameter；random-check太含糊；比例检验条件最好用p0算expected counts。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>Use a one-sample t-test because the sample size is 130.<span class="why">为什么错：这是population proportion，应该用one-proportion z-test，不是t-test。</span></div></div>
+  </div>
+
+  <div class="card warn">
+    <div class="ctit">推断结论：非确定性 + population context <span class="bx a">每年Q4/Q6</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>Because the p-value 0.023 is less than α=0.05, reject H0. There is convincing statistical evidence that the true proportion of students at Karen's high school who use the app at least once per week is greater than 0.22.<span class="why">为什么得E：比较p-value和α，decision正确，结论按Ha方向写，并且是population。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>The sample proportion is greater than 0.22, so Karen is right.<span class="why">为什么只给很少分：结论变成sample；没有p-value/alpha；语言太确定。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>Accept Ha. This proves more students use the app.<span class="why">为什么错：不能accept alternative；proves是确定性语言，评分标准明确不接受。</span></div></div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">CI联动检验 <span class="bx b">22/25年</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>Because 2.9 is not contained in the 97% confidence interval, reject H0 at α=0.03. There is convincing evidence that the population mean number of bedrooms in newly built houses in 2024 is different from 2.9.<span class="why">为什么得E：把null value是否在CI内和双侧检验结论正确连接。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>I am 97% confident the mean is in the interval, so the sample mean is different from 2.9.<span class="why">为什么不够：结论对象必须是population mean，不是sample mean；还要明确null value不在interval。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>There is a 97% chance that μ is in the interval.<span class="why">为什么错：parameter不是随机变量；正确是“we are 97% confident”。</span></div></div>
+  </div>
+
+  <div class="card good">
+    <div class="ctit">Statistical Significance vs Practical Importance <span class="bx g">25年Q6</span></div>
+    <div class="qa"><div class="tag ok">满分写法</div><div>p-value=0.002 gives statistical evidence of a difference in mean reading scores. Cohen's d≈0.63 describes practical importance, so the effect is somewhat meaningful in real life. If both standard deviations increase while the mean difference stays the same, Cohen's d decreases, so practical importance decreases.<span class="why">为什么得E：把p-value和effect size的功能分开，并解释denominator变大导致d变小。</span></div></div>
+    <div class="qa"><div class="tag mid">半对写法</div><div>The p-value is small, so the result is very meaningful in real life.<span class="why">为什么会扣分：p-value说明statistical evidence，不直接说明实际意义大小。</span></div></div>
+    <div class="qa"><div class="tag nope">错误写法</div><div>If standard deviations increase, Cohen's d increases because there is more variability.<span class="why">为什么错：Cohen's d的标准差在分母；分母变大，d变小。</span></div></div>
+  </div>
+
+  <div class="card info">
+    <div class="ctit">给学生的自查口诀 <span class="bx b">写完30秒检查</span></div>
+    <ul class="ul">
+      <li>比较题：有没有直接写 greater/less/more/less，而不是只列数字？</li>
+      <li>推断题：我的结论是不是population，不是sample？有没有按Hₐ方向写？</li>
+      <li>条件题：random sample / random assignment有没有写完整？10%和large counts有没有带数字？</li>
+      <li>计算题：calculator函数的n、p、mean、sd、lower/upper bound有没有标清楚？</li>
+      <li>解释题：有没有context三件套：population或group、sampling unit、response variable？</li>
     </ul>
   </div>
 </div>
