@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Boxplot comparison answer template</title>
+  <desc id="desc">A visual reminder to compare center, spread, and outliers directly.</desc>
+  <rect width="720" height="360" fill="#F7F8FA"/>
+  <text x="32" y="42" fill="#1F2937" font-family="Arial, sans-serif" font-size="24" font-weight="700">Distribution Comparison</text>
+  <text x="32" y="68" fill="#667085" font-family="Arial, sans-serif" font-size="14">Write a direct comparison, not just a list of numbers.</text>
+
+  <line x1="78" y1="135" x2="642" y2="135" stroke="#C7CED8" stroke-width="2"/>
+  <line x1="78" y1="230" x2="642" y2="230" stroke="#C7CED8" stroke-width="2"/>
+  <text x="32" y="141" fill="#3C3489" font-family="Arial, sans-serif" font-size="15" font-weight="700">Group A</text>
+  <text x="32" y="236" fill="#185FA5" font-family="Arial, sans-serif" font-size="15" font-weight="700">Group B</text>
+
+  <line x1="118" y1="135" x2="338" y2="135" stroke="#7F77DD" stroke-width="4"/>
+  <rect x="156" y="109" width="116" height="52" rx="5" fill="#EEEDFE" stroke="#7F77DD" stroke-width="3"/>
+  <line x1="198" y1="109" x2="198" y2="161" stroke="#3C3489" stroke-width="4"/>
+  <circle cx="440" cy="135" r="8" fill="#E24B4A"/>
+  <text x="456" y="139" fill="#A32D2D" font-family="Arial, sans-serif" font-size="13">outlier</text>
+
+  <line x1="276" y1="230" x2="596" y2="230" stroke="#378ADD" stroke-width="4"/>
+  <rect x="352" y="204" width="154" height="52" rx="5" fill="#E6F1FB" stroke="#378ADD" stroke-width="3"/>
+  <line x1="432" y1="204" x2="432" y2="256" stroke="#185FA5" stroke-width="4"/>
+
+  <path d="M198 172 L198 184 L432 184 L432 172" fill="none" stroke="#1D9E75" stroke-width="3"/>
+  <text x="240" y="207" fill="#0F6E56" font-family="Arial, sans-serif" font-size="15" font-weight="700">Compare center: A lower than B</text>
+
+  <rect x="48" y="284" width="624" height="48" rx="8" fill="#FFFFFF" stroke="#D9DEE7"/>
+  <text x="64" y="306" fill="#1F2937" font-family="Arial, sans-serif" font-size="14" font-weight="700">Full-credit sentence:</text>
+  <text x="64" y="326" fill="#475467" font-family="Arial, sans-serif" font-size="13">A has lower center than B because median A is smaller; compare spread and mention outliers in context.</text>
+</svg>

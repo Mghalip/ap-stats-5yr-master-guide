@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Calculator notation labels</title>
+  <desc id="desc">Examples of labeled binomial and normal calculator notation.</desc>
+  <rect width="720" height="360" fill="#F7F8FA"/>
+  <text x="32" y="42" fill="#1F2937" font-family="Arial, sans-serif" font-size="24" font-weight="700">Calculator Notation Must Be Labeled</text>
+  <text x="32" y="68" fill="#667085" font-family="Arial, sans-serif" font-size="14">Parameters and bounds are part of the work.</text>
+
+  <rect x="48" y="105" width="624" height="82" rx="10" fill="#FFFFFF" stroke="#D9DEE7"/>
+  <text x="70" y="139" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">1 - binomcdf(</text>
+  <text x="218" y="139" fill="#3C3489" font-family="Arial, sans-serif" font-size="18" font-weight="700">n=20</text>
+  <text x="274" y="139" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">,</text>
+  <text x="294" y="139" fill="#185FA5" font-family="Arial, sans-serif" font-size="18" font-weight="700">p=0.10</text>
+  <text x="368" y="139" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">,</text>
+  <text x="388" y="139" fill="#854F0B" font-family="Arial, sans-serif" font-size="18" font-weight="700">upper bound=3</text>
+  <text x="526" y="139" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">)</text>
+  <text x="220" y="166" fill="#667085" font-family="Arial, sans-serif" font-size="12">trials</text>
+  <text x="304" y="166" fill="#667085" font-family="Arial, sans-serif" font-size="12">success probability</text>
+  <text x="410" y="166" fill="#667085" font-family="Arial, sans-serif" font-size="12">boundary</text>
+
+  <rect x="48" y="214" width="624" height="82" rx="10" fill="#FFFFFF" stroke="#D9DEE7"/>
+  <text x="70" y="248" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">normalcdf(</text>
+  <text x="174" y="248" fill="#3C3489" font-family="Arial, sans-serif" font-size="18" font-weight="700">lower=296</text>
+  <text x="276" y="248" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">,</text>
+  <text x="296" y="248" fill="#185FA5" font-family="Arial, sans-serif" font-size="18" font-weight="700">upper=304</text>
+  <text x="400" y="248" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">,</text>
+  <text x="420" y="248" fill="#854F0B" font-family="Arial, sans-serif" font-size="18" font-weight="700">mean=300</text>
+  <text x="518" y="248" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">,</text>
+  <text x="538" y="248" fill="#A32D2D" font-family="Arial, sans-serif" font-size="18" font-weight="700">sd=5</text>
+  <text x="592" y="248" fill="#1F2937" font-family="Arial, sans-serif" font-size="18" font-weight="700">)</text>
+  <text x="184" y="275" fill="#667085" font-family="Arial, sans-serif" font-size="12">left boundary</text>
+  <text x="310" y="275" fill="#667085" font-family="Arial, sans-serif" font-size="12">right boundary</text>
+  <text x="438" y="275" fill="#667085" font-family="Arial, sans-serif" font-size="12">center</text>
+  <text x="540" y="275" fill="#667085" font-family="Arial, sans-serif" font-size="12">spread</text>
+
+  <text x="76" y="326" fill="#A32D2D" font-family="Arial, sans-serif" font-size="14" font-weight="700">Avoid:</text>
+  <text x="130" y="326" fill="#475467" font-family="Arial, sans-serif" font-size="14">binomcdf(20, .10, 3) with no labels when the boundary is not obvious.</text>
+</svg>

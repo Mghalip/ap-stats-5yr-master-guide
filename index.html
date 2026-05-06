@@ -53,6 +53,11 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
 .tag.nope{background:#FCEBEB;color:#A32D2D;}
 .qa div:last-child{font-size:12px;line-height:1.65;color:var(--color-text-secondary);}
 .why{display:block;margin-top:2px;color:var(--color-text-tertiary);}
+.visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.8rem;}
+.visual{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;}
+.visual img{display:block;width:100%;height:auto;background:var(--color-background-secondary);}
+.vcap{font-size:11.5px;color:var(--color-text-secondary);padding:6px 9px;line-height:1.45;border-top:0.5px solid var(--color-border-tertiary);}
+@media(max-width:640px){.visual-grid{grid-template-columns:1fr;}}
 @media(max-width:520px){.g2,.g3{grid-template-columns:1fr;}}
 </style>
 
@@ -86,6 +91,25 @@ table.sc td{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);colo
     <div class="stat"><div class="sn">15</div><div class="sl">必考核心考点</div></div>
     <div class="stat"><div class="sn">70+</div><div class="sl">精确失分陷阱</div></div>
     <div class="stat"><div class="sn">5</div><div class="sl">年真题全覆盖</div></div>
+  </div>
+
+  <div class="visual-grid">
+    <div class="visual">
+      <img src="assets/distribution-compare.svg" alt="Boxplot比较两组分布的视觉模板">
+      <div class="vcap">图表题先看center、spread、outlier，再写直接比较，不只列数字。</div>
+    </div>
+    <div class="visual">
+      <img src="assets/inference-flow.svg" alt="AP Statistics推断题四步流程图">
+      <div class="vcap">推断题按固定顺序写，最后一句必须回到population和Hₐ方向。</div>
+    </div>
+    <div class="visual">
+      <img src="assets/sampling-design.svg" alt="抽样与实验设计视觉对比图">
+      <div class="vcap">Sampling决定能否推广，assignment决定能否因果，别混。</div>
+    </div>
+    <div class="visual">
+      <img src="assets/calculator-notation.svg" alt="binomcdf和normalcdf参数标注图">
+      <div class="vcap">Calculator函数必须标参数和边界，否则答案对也可能丢过程分。</div>
+    </div>
   </div>
 
   <div class="card good">

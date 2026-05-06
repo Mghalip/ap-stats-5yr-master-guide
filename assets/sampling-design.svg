@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Sampling and experiment design map</title>
+  <desc id="desc">A visual comparison of sampling for generalization and random assignment for causation.</desc>
+  <rect width="720" height="360" fill="#F7F8FA"/>
+  <text x="32" y="42" fill="#1F2937" font-family="Arial, sans-serif" font-size="24" font-weight="700">Design Logic Map</text>
+  <text x="32" y="68" fill="#667085" font-family="Arial, sans-serif" font-size="14">Sampling and assignment answer different questions.</text>
+
+  <rect x="42" y="105" width="290" height="170" rx="12" fill="#E6F1FB" stroke="#378ADD" stroke-width="2"/>
+  <text x="68" y="137" fill="#185FA5" font-family="Arial, sans-serif" font-size="19" font-weight="700">Random Sampling</text>
+  <circle cx="96" cy="178" r="15" fill="#378ADD"/>
+  <circle cx="140" cy="178" r="15" fill="#378ADD"/>
+  <circle cx="184" cy="178" r="15" fill="#378ADD"/>
+  <circle cx="228" cy="178" r="15" fill="#D9DEE7"/>
+  <circle cx="272" cy="178" r="15" fill="#D9DEE7"/>
+  <path d="M96 206 C132 240, 210 240, 252 206" fill="none" stroke="#185FA5" stroke-width="3"/>
+  <text x="80" y="242" fill="#475467" font-family="Arial, sans-serif" font-size="14">lets you generalize</text>
+  <text x="80" y="263" fill="#475467" font-family="Arial, sans-serif" font-size="14">from sample to population</text>
+
+  <rect x="388" y="105" width="290" height="170" rx="12" fill="#EAF3DE" stroke="#1D9E75" stroke-width="2"/>
+  <text x="414" y="137" fill="#2D6110" font-family="Arial, sans-serif" font-size="19" font-weight="700">Random Assignment</text>
+  <rect x="430" y="166" width="74" height="42" rx="8" fill="#FFFFFF" stroke="#1D9E75"/>
+  <rect x="560" y="166" width="74" height="42" rx="8" fill="#FFFFFF" stroke="#1D9E75"/>
+  <text x="448" y="192" fill="#2D6110" font-family="Arial, sans-serif" font-size="15" font-weight="700">Treat A</text>
+  <text x="578" y="192" fill="#2D6110" font-family="Arial, sans-serif" font-size="15" font-weight="700">Treat B</text>
+  <line x1="533" y1="151" x2="468" y2="166" stroke="#1D9E75" stroke-width="3"/>
+  <line x1="533" y1="151" x2="598" y2="166" stroke="#1D9E75" stroke-width="3"/>
+  <circle cx="533" cy="151" r="18" fill="#1D9E75"/>
+  <text x="527" y="156" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="16" font-weight="700">R</text>
+  <text x="426" y="242" fill="#475467" font-family="Arial, sans-serif" font-size="14">lets you argue causation</text>
+  <text x="426" y="263" fill="#475467" font-family="Arial, sans-serif" font-size="14">if the design is valid</text>
+
+  <rect x="120" y="304" width="480" height="34" rx="17" fill="#FFFFFF" stroke="#D9DEE7"/>
+  <text x="178" y="326" fill="#1F2937" font-family="Arial, sans-serif" font-size="14" font-weight="700">Memory: Sampling → Generalization; Assignment → Causation</text>
+</svg>
